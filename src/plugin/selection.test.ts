@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest'
 import { getSelectionStatus } from './selection'
+import { LAYER } from './bubble-schema'
 
 function instanceWithSong() {
   return {
     type: 'INSTANCE',
-    findOne: (p: (n: { name: string }) => boolean) => (p({ name: 'Song Name' }) ? {} : null),
+    findOne: (p: (n: { name: string }) => boolean) => (p({ name: LAYER.SONG_NAME }) ? {} : null),
   }
 }
 
