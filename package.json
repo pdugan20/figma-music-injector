@@ -6,6 +6,14 @@
   "author": "Patrick Dugan",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdugan20/figma-music-bubble.git"
+  },
+  "homepage": "https://github.com/pdugan20/figma-music-bubble#readme",
+  "bugs": {
+    "url": "https://github.com/pdugan20/figma-music-bubble/issues"
+  },
   "scripts": {
     "build": "node build.mjs",
     "watch": "node build.mjs --watch",
