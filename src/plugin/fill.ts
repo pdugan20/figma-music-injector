@@ -21,7 +21,7 @@ export async function fillBubble(instance: InstanceNode, data: PopulateMessage):
   songNode.characters = data.trackName
   artistNode.characters = data.artistName
 
-  if (data.artworkBytes) {
+  if (data.artworkBytes && data.artworkBytes.length > 0) {
     const image = figma.createImage(new Uint8Array(data.artworkBytes))
     const fills = (albumArtNode.fills as Paint[]).slice()
     const existingIdx = fills.findIndex((f) => f.type === 'IMAGE')
