@@ -58,7 +58,7 @@ layer-name schema defined in `plugin/bubble-schema.ts`.
 
 Split **where the bubble comes from** (swappable) from **what we do to it** (stable).
 
-```
+```text
 src/
   types.ts                 # RGB, TrackEntry, SelectionStatus, PluginMessage unions
   shared/color.ts          # PURE: darken, luminance, needsLightText, toHex
@@ -91,8 +91,8 @@ manifest.json              # networkAccess + documentAccess
 - **`types.ts`** — shared shapes. `RGB = { r: number; g: number; b: number }` (0–1).
   `TrackEntry = { trackName; artistName; artworkUrl; dominantColor: RGB | null }`.
   Message unions: UI→plugin `{ type: 'populate', trackName, artistName, artworkBytes:
-  number[] | null, dominantColor: RGB | null }`; plugin→UI `{ type: 'selection', status:
-  SelectionStatus }`. `SelectionStatus = { ok: boolean; message: string }`.
+number[] | null, dominantColor: RGB | null }`; plugin→UI `{ type: 'selection', status:
+SelectionStatus }`. `SelectionStatus = { ok: boolean; message: string }`.
 
 - **`shared/color.ts`** (PURE) — `darken(rgb, factor)`, `luminance(rgb)`,
   `needsLightText(bg)`, `toHex(rgb | null)`. Used by both threads.
@@ -102,15 +102,15 @@ manifest.json              # networkAccess + documentAccess
   (`"Apple Logo"` / `"Apple"`). The single source of truth for the structural contract.
 
 - **`plugin/bubble-source.ts`** (SEAM) — `interface BubbleSource { resolve():
-  BubbleResolution }` where `BubbleResolution = { ok: true; instance: InstanceNode } |
-  { ok: false; message: string }`. `SelectionBubbleSource` validates the current
+BubbleResolution }` where `BubbleResolution = { ok: true; instance: InstanceNode } |
+{ ok: false; message: string }`. `SelectionBubbleSource` validates the current
   selection (single Music Bubble instance with a "Song Name" layer).
 
 - **`plugin/selection.ts`** — `getSelectionStatus(selection: readonly SceneNode[]):
-  SelectionStatus`. Pure over the selection array; testable with fake nodes.
+SelectionStatus`. Pure over the selection array; testable with fake nodes.
 
 - **`plugin/theme.ts`** (PURE) — `computeBubbleTheme(dominant: RGB): { primary: RGB;
-  dark: RGB; textColor: RGB; logoColor: RGB; logoOpacity: number }`. All color-decision
+dark: RGB; textColor: RGB; logoColor: RGB; logoOpacity: number }`. All color-decision
   logic extracted out of node mutation. `dark = darken(primary, 0.65)`;
   `lightText = needsLightText(primary)`; `textColor` = white if lightText else black;
   `logoColor` = white if lightText else `dark`; `logoOpacity` = 0.6 if lightText else 1.
@@ -136,7 +136,7 @@ manifest.json              # networkAccess + documentAccess
 
 - **`ui/dominant-color.ts`** — `extractDominantColor(url): Promise<RGB | null>` (fetch →
   bitmap → 60×60 OffscreenCanvas → `pickDominant`). `pickDominant(data:
-  Uint8ClampedArray): RGB | null` is PURE: skip alpha < 128 and near-white/near-black
+Uint8ClampedArray): RGB | null` is PURE: skip alpha < 128 and near-white/near-black
   (avg < 40 or > 215), quantize to 4-bit buckets, return the averaged modal bucket.
 
 - **`ui/recents.ts`** — `RecentsStore` over a `Storage`-like adapter that falls back to
@@ -158,7 +158,7 @@ manifest.json              # networkAccess + documentAccess
 5. Click result → `main.ts` guards on selection-ok → `itunes.fetchArtworkBytes` (600×600)
    → `recents.add` → `postMessage({ type: 'populate', ... })`.
 6. `index.ts` receives `populate` → `bubbleSource.resolve()` → `fillBubble(instance,
-   data)` → `figma.notify`.
+data)` → `figma.notify`.
 
 ## Error handling
 

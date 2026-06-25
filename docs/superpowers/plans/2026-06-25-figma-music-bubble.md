@@ -24,9 +24,11 @@
 ### Task 1: Scaffolding & build toolchain
 
 **Files:**
+
 - Create: `package.json`, `tsconfig.json`, `tsconfig.eslint.json`, `build.mjs`, `vitest.config.ts`, `eslint.config.mjs`, `.prettierrc.yml`, `.prettierignore`, `.editorconfig`, `.nvmrc`, `manifest.json`, `src/ui/ui.html`, `src/plugin/index.ts` (stub), `src/ui/main.ts` (stub)
 
 **Interfaces:**
+
 - Produces: `npm run build` → `dist/plugin.js` + `dist/ui.html`; `npm test`, `npm run lint`, `npm run type-check` all runnable.
 
 - [ ] **Step 1: Create `package.json`**
@@ -201,78 +203,174 @@ export default defineConfig({
 <html>
   <head>
     <style>
-      html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-      #plugin-root { display: flex; flex-direction: column; height: 100%; }
-      body { display: block; font-family: var(--font-family, Inter, sans-serif); font-size: 11px; }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      #plugin-root {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      body {
+        display: block;
+        font-family: var(--font-family, Inter, sans-serif);
+        font-size: 11px;
+      }
 
       .search-row {
         padding: var(--spacer-2, 8px) var(--spacer-3, 12px);
         border-bottom: 1px solid var(--figma-color-border, #e5e5e5);
       }
-      .input-wrap { position: relative; display: flex; align-items: center; }
+      .input-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
 
       #search-input {
-        width: 100%; height: 28px; padding: 0 40px 0 0; border: none;
-        background: var(--figma-color-bg, #fff); color: var(--figma-color-text, #1a1a1a);
-        font-family: var(--font-family, Inter, sans-serif); font-size: 11px; outline: none; box-sizing: border-box;
+        width: 100%;
+        height: 28px;
+        padding: 0 40px 0 0;
+        border: none;
+        background: var(--figma-color-bg, #fff);
+        color: var(--figma-color-text, #1a1a1a);
+        font-family: var(--font-family, Inter, sans-serif);
+        font-size: 11px;
+        outline: none;
+        box-sizing: border-box;
       }
-      #search-input::placeholder { color: var(--figma-color-text-secondary, #aaa); }
+      #search-input::placeholder {
+        color: var(--figma-color-text-secondary, #aaa);
+      }
 
       #clear-btn {
-        position: absolute; right: 0; background: none; border: none; cursor: pointer;
-        color: var(--figma-color-bg-brand, #0d99ff); font-size: 11px;
-        font-family: var(--font-family, Inter, sans-serif); padding: 0; line-height: 1;
-        display: none; white-space: nowrap;
+        position: absolute;
+        right: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--figma-color-bg-brand, #0d99ff);
+        font-size: 11px;
+        font-family: var(--font-family, Inter, sans-serif);
+        padding: 0;
+        line-height: 1;
+        display: none;
+        white-space: nowrap;
       }
-      #clear-btn:hover { opacity: 0.75; }
+      #clear-btn:hover {
+        opacity: 0.75;
+      }
 
-      #results-area { flex: 1; overflow-y: auto; min-height: 0; }
+      #results-area {
+        flex: 1;
+        overflow-y: auto;
+        min-height: 0;
+      }
 
       .section-header {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 8px 12px 4px; font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
-        text-transform: uppercase; color: var(--figma-color-text-secondary, #999);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px 4px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--figma-color-text-secondary, #999);
       }
       .section-clear {
-        background: none; border: none; cursor: pointer; color: var(--figma-color-bg-brand, #0d99ff);
-        font-size: 11px; font-family: var(--font-family, Inter, sans-serif); font-weight: 400;
-        text-transform: none; letter-spacing: 0; padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--figma-color-bg-brand, #0d99ff);
+        font-size: 11px;
+        font-family: var(--font-family, Inter, sans-serif);
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: 0;
+        padding: 0;
       }
-      .section-clear:hover { opacity: 0.75; }
+      .section-clear:hover {
+        opacity: 0.75;
+      }
 
       .result-item {
-        display: flex; align-items: center; gap: 10px; padding: 6px 12px;
-        cursor: pointer; position: relative; transition: background 0.1s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 12px;
+        cursor: pointer;
+        position: relative;
+        transition: background 0.1s;
       }
       .result-item::after {
-        content: ''; position: absolute; bottom: 0; left: 66px; right: 12px; height: 1px;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 66px;
+        right: 12px;
+        height: 1px;
         background: var(--figma-color-border, #e5e5e5);
       }
-      .result-item:last-child::after { display: none; }
-      .result-item:hover { background: var(--figma-color-bg-secondary, #f5f5f5); }
+      .result-item:last-child::after {
+        display: none;
+      }
+      .result-item:hover {
+        background: var(--figma-color-bg-secondary, #f5f5f5);
+      }
 
-      .artwork-wrap { position: relative; width: 40px; height: 40px; flex-shrink: 0; }
+      .artwork-wrap {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+      }
       .artwork {
-        width: 40px; height: 40px; border-radius: 4px; object-fit: cover;
-        background: var(--figma-color-bg-secondary, #f0f0f0); display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        object-fit: cover;
+        background: var(--figma-color-bg-secondary, #f0f0f0);
+        display: block;
       }
       .color-dot {
-        position: absolute; bottom: -3px; right: -3px; width: 10px; height: 10px;
-        border-radius: 50%; border: 1.5px solid var(--figma-color-bg, #fff);
+        position: absolute;
+        bottom: -3px;
+        right: -3px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1.5px solid var(--figma-color-bg, #fff);
       }
 
-      .track-info { flex: 1; min-width: 0; }
+      .track-info {
+        flex: 1;
+        min-width: 0;
+      }
       .track-name {
-        font-weight: 600; color: var(--figma-color-text, #1a1a1a);
-        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        font-weight: 600;
+        color: var(--figma-color-text, #1a1a1a);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .artist-name {
         color: var(--figma-color-text-secondary, #777);
-        white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 2px;
       }
 
-      .empty-state, .loading {
-        padding: 16px 12px; color: var(--figma-color-text-secondary, #888); text-align: center;
+      .empty-state,
+      .loading {
+        padding: 16px 12px;
+        color: var(--figma-color-text-secondary, #888);
+        text-align: center;
       }
     </style>
   </head>
@@ -375,9 +473,11 @@ git commit -m "chore: scaffold plugin toolchain (esbuild, vitest, eslint, manife
 ### Task 2: Shared types and color math
 
 **Files:**
+
 - Create: `src/types.ts`, `src/shared/color.ts`, `src/shared/color.test.ts`
 
 **Interfaces:**
+
 - Produces: `RGB`, `TrackEntry`, `SelectionStatus`, `PopulateMessage`, `SelectionMessage` (in `types.ts`); `darken(c: RGB, factor: number): RGB`, `luminance(c: RGB): number`, `needsLightText(bg: RGB): boolean`, `toHex(c: RGB | null): string` (in `shared/color.ts`).
 
 - [ ] **Step 1: Create `src/types.ts`**
@@ -476,7 +576,11 @@ export function toHex(color: RGB | null): string {
   return (
     '#' +
     [color.r, color.g, color.b]
-      .map((v) => Math.round(v * 255).toString(16).padStart(2, '0'))
+      .map((v) =>
+        Math.round(v * 255)
+          .toString(16)
+          .padStart(2, '0')
+      )
       .join('')
   )
 }
@@ -499,9 +603,11 @@ git commit -m "feat: add shared RGB types and color math"
 ### Task 3: Bubble theme decisions
 
 **Files:**
+
 - Create: `src/plugin/theme.ts`, `src/plugin/theme.test.ts`
 
 **Interfaces:**
+
 - Consumes: `RGB` (types), `darken`, `needsLightText` (shared/color).
 - Produces: `BubbleTheme { primary: RGB; dark: RGB; textColor: RGB; logoColor: RGB; logoOpacity: number }`; `computeBubbleTheme(dominant: RGB): BubbleTheme`.
 
@@ -527,7 +633,11 @@ describe('computeBubbleTheme', () => {
   })
 
   it('primary equals the input color', () => {
-    expect(computeBubbleTheme({ r: 0.2, g: 0.4, b: 0.6 }).primary).toEqual({ r: 0.2, g: 0.4, b: 0.6 })
+    expect(computeBubbleTheme({ r: 0.2, g: 0.4, b: 0.6 }).primary).toEqual({
+      r: 0.2,
+      g: 0.4,
+      b: 0.6,
+    })
   })
 })
 ```
@@ -579,9 +689,11 @@ git commit -m "feat: add bubble theme decision logic"
 ### Task 4: Layer schema and selection status
 
 **Files:**
+
 - Create: `src/plugin/bubble-schema.ts`, `src/plugin/selection.ts`, `src/plugin/selection.test.ts`
 
 **Interfaces:**
+
 - Produces: `LAYER` constants; `getSelectionStatus(selection: readonly SceneNode[]): SelectionStatus`.
 
 - [ ] **Step 1: Create `src/plugin/bubble-schema.ts`**
@@ -604,7 +716,10 @@ import { describe, it, expect } from 'vitest'
 import { getSelectionStatus } from './selection'
 
 function instanceWithSong() {
-  return { type: 'INSTANCE', findOne: (p: (n: { name: string }) => boolean) => (p({ name: 'Song Name' }) ? {} : null) }
+  return {
+    type: 'INSTANCE',
+    findOne: (p: (n: { name: string }) => boolean) => (p({ name: 'Song Name' }) ? {} : null),
+  }
 }
 
 describe('getSelectionStatus', () => {
@@ -672,9 +787,11 @@ git commit -m "feat: add layer schema and selection status"
 ### Task 5: Bubble source seam and plugin meta
 
 **Files:**
+
 - Create: `src/plugin/meta.ts`, `src/plugin/bubble-source.ts`, `src/plugin/bubble-source.test.ts`
 
 **Interfaces:**
+
 - Consumes: `getSelectionStatus` (selection).
 - Produces: `TOOL_ID`, `DISPLAY_NAME` (meta); `BubbleResolution = { ok: true; instance: InstanceNode } | { ok: false; message: string }`; `interface BubbleSource { resolve(): BubbleResolution }`; `SelectionBubbleSource` class.
 
@@ -725,9 +842,7 @@ Expected: FAIL — `./bubble-source` not found.
 ```ts
 import { getSelectionStatus } from './selection'
 
-export type BubbleResolution =
-  | { ok: true; instance: InstanceNode }
-  | { ok: false; message: string }
+export type BubbleResolution = { ok: true; instance: InstanceNode } | { ok: false; message: string }
 
 export interface BubbleSource {
   resolve(): BubbleResolution
@@ -760,9 +875,11 @@ git commit -m "feat: add bubble source seam"
 ### Task 6: Node helpers and fill operation
 
 **Files:**
+
 - Create: `src/plugin/nodes.ts`, `src/plugin/fill.ts`, `src/plugin/fill.test.ts`
 
 **Interfaces:**
+
 - Consumes: `LAYER` (bubble-schema), `computeBubbleTheme` (theme), `TOOL_ID`/`DISPLAY_NAME` (meta), `PopulateMessage`/`RGB` (types).
 - Produces: `replaceSolidFill(node, color, opacity?)` (nodes); `fillBubble(instance: InstanceNode, data: PopulateMessage): Promise<boolean>` (fill).
 
@@ -792,7 +909,13 @@ import { fillBubble } from './fill'
 import { PopulateMessage } from '../types'
 
 function textNode(name: string) {
-  return { name, type: 'TEXT', characters: '', fontName: { family: 'Inter', style: 'Regular' }, fills: [{ type: 'SOLID', color: { r: 0, g: 0, b: 0 }, opacity: 1 }] }
+  return {
+    name,
+    type: 'TEXT',
+    characters: '',
+    fontName: { family: 'Inter', style: 'Regular' },
+    fills: [{ type: 'SOLID', color: { r: 0, g: 0, b: 0 }, opacity: 1 }],
+  }
 }
 
 function buildInstance() {
@@ -866,8 +989,12 @@ import { replaceSolidFill } from './nodes'
 import { TOOL_ID, DISPLAY_NAME } from './meta'
 
 export async function fillBubble(instance: InstanceNode, data: PopulateMessage): Promise<boolean> {
-  const songNode = instance.findOne((n) => n.name === LAYER.SONG_NAME && n.type === 'TEXT') as TextNode | null
-  const artistNode = instance.findOne((n) => n.name === LAYER.ARTIST_NAME && n.type === 'TEXT') as TextNode | null
+  const songNode = instance.findOne(
+    (n) => n.name === LAYER.SONG_NAME && n.type === 'TEXT'
+  ) as TextNode | null
+  const artistNode = instance.findOne(
+    (n) => n.name === LAYER.ARTIST_NAME && n.type === 'TEXT'
+  ) as TextNode | null
   const albumArtNode = instance.findOne((n) => n.name === LAYER.ALBUM_ART) as RectangleNode | null
 
   if (!songNode || !artistNode || !albumArtNode) return false
@@ -932,9 +1059,11 @@ git commit -m "feat: add node fill helpers and fillBubble operation"
 ### Task 7: Plugin entry (composition root)
 
 **Files:**
+
 - Modify: `src/plugin/index.ts`
 
 **Interfaces:**
+
 - Consumes: `getSelectionStatus` (selection), `SelectionBubbleSource` (bubble-source), `fillBubble` (fill), `TOOL_ID`/`DISPLAY_NAME` (meta), `PopulateMessage` (types).
 
 - [ ] **Step 1: Replace `src/plugin/index.ts`**
@@ -952,7 +1081,10 @@ figma.showUI(__html__, { width: 320, height: 480 })
 figma.root.setRelaunchData({ [TOOL_ID]: DISPLAY_NAME })
 
 function postSelection() {
-  figma.ui.postMessage({ type: 'selection', status: getSelectionStatus(figma.currentPage.selection) })
+  figma.ui.postMessage({
+    type: 'selection',
+    status: getSelectionStatus(figma.currentPage.selection),
+  })
 }
 
 postSelection()
@@ -991,9 +1123,11 @@ git commit -m "feat: wire plugin entry to source, fill, and notify"
 ### Task 8: Recents store
 
 **Files:**
+
 - Create: `src/ui/recents.ts`, `src/ui/recents.test.ts`
 
 **Interfaces:**
+
 - Consumes: `TrackEntry` (types).
 - Produces: `interface KeyValueStore { getItem; setItem; removeItem }`; `createStore(): KeyValueStore`; `class RecentsStore { constructor(store); get(): TrackEntry[]; add(entry): void; clear(): void }`.
 
@@ -1123,9 +1257,11 @@ git commit -m "feat: add recents store with storage fallback"
 ### Task 9: Dominant color extraction
 
 **Files:**
+
 - Create: `src/ui/dominant-color.ts`, `src/ui/dominant-color.test.ts`
 
 **Interfaces:**
+
 - Consumes: `RGB` (types).
 - Produces: `pickDominant(data: Uint8ClampedArray): RGB | null`; `extractDominantColor(url: string): Promise<RGB | null>`.
 
@@ -1142,7 +1278,15 @@ function pixels(rows: [number, number, number, number][]): Uint8ClampedArray {
 describe('pickDominant', () => {
   it('returns null when all pixels are filtered out', () => {
     // transparent, near-black, near-white
-    expect(pickDominant(pixels([[120, 120, 120, 0], [10, 10, 10, 255], [250, 250, 250, 255]]))).toBeNull()
+    expect(
+      pickDominant(
+        pixels([
+          [120, 120, 120, 0],
+          [10, 10, 10, 255],
+          [250, 250, 250, 255],
+        ])
+      )
+    ).toBeNull()
   })
 
   it('returns the modal mid-tone bucket as 0-1 channels', () => {
@@ -1226,9 +1370,11 @@ git commit -m "feat: add dominant color extraction"
 ### Task 10: iTunes search client
 
 **Files:**
+
 - Create: `src/ui/itunes.ts`, `src/ui/itunes.test.ts`
 
 **Interfaces:**
+
 - Consumes: `TrackEntry` (types).
 - Produces: `upgradeArtwork(url: string, size?: string): string`; `searchTracks(query: string, limit?: number): Promise<TrackEntry[]>`; `fetchArtworkBytes(artworkUrl: string): Promise<number[] | null>`.
 
@@ -1247,15 +1393,30 @@ describe('itunes', () => {
   })
 
   it('searchTracks maps results to TrackEntry with 200x200 art and null color', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
-      json: async () => ({ results: [{ trackName: 'T', artistName: 'A', artworkUrl100: 'https://x/100x100bb.jpg' }] }),
-    }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        json: async () => ({
+          results: [{ trackName: 'T', artistName: 'A', artworkUrl100: 'https://x/100x100bb.jpg' }],
+        }),
+      })
+    )
     const tracks = await searchTracks('q')
-    expect(tracks).toEqual([{ trackName: 'T', artistName: 'A', artworkUrl: 'https://x/200x200bb.jpg', dominantColor: null }])
+    expect(tracks).toEqual([
+      {
+        trackName: 'T',
+        artistName: 'A',
+        artworkUrl: 'https://x/200x200bb.jpg',
+        dominantColor: null,
+      },
+    ])
   })
 
   it('fetchArtworkBytes returns a byte array on success', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ arrayBuffer: async () => new Uint8Array([1, 2, 3]).buffer }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({ arrayBuffer: async () => new Uint8Array([1, 2, 3]).buffer })
+    )
     expect(await fetchArtworkBytes('https://x/200x200bb.jpg')).toEqual([1, 2, 3])
   })
 
@@ -1328,9 +1489,11 @@ git commit -m "feat: add iTunes search client"
 ### Task 11: DOM render helpers
 
 **Files:**
+
 - Create: `src/ui/render.ts`, `src/ui/render.test.ts`
 
 **Interfaces:**
+
 - Consumes: `TrackEntry` (types), `toHex` (shared/color).
 - Produces: `makeItem(entry: TrackEntry, onClick: () => void): HTMLElement`; `addSection(area: HTMLElement, label: string, onClear?: () => void): HTMLElement`.
 
@@ -1341,7 +1504,12 @@ import { describe, it, expect, vi } from 'vitest'
 import { makeItem, addSection } from './render'
 import { TrackEntry } from '../types'
 
-const entry: TrackEntry = { trackName: 'Song', artistName: 'Artist', artworkUrl: 'https://x/200x200bb.jpg', dominantColor: { r: 1, g: 0, b: 0 } }
+const entry: TrackEntry = {
+  trackName: 'Song',
+  artistName: 'Artist',
+  artworkUrl: 'https://x/200x200bb.jpg',
+  dominantColor: { r: 1, g: 0, b: 0 },
+}
 
 describe('render', () => {
   it('makeItem builds a row with track + artist and fires onClick', () => {
@@ -1377,7 +1545,11 @@ import { TrackEntry } from '../types'
 import { toHex } from '../shared/color'
 
 function escHtml(s: string): string {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
 }
 
 export function makeItem(entry: TrackEntry, onClick: () => void): HTMLElement {
@@ -1434,9 +1606,11 @@ git commit -m "feat: add DOM render helpers"
 ### Task 12: Featured tracks
 
 **Files:**
+
 - Create: `src/ui/featured.ts`
 
 **Interfaces:**
+
 - Consumes: `TrackEntry`/`RGB` (types), `searchTracks` (itunes), `extractDominantColor` (dominant-color).
 - Produces: `FEATURED_SEARCHES: string[]`; `loadFeatured(): Promise<TrackEntry[]>`.
 
@@ -1497,9 +1671,11 @@ git commit -m "feat: add featured tracks loader"
 ### Task 13: UI controller (composition root) and final build
 
 **Files:**
+
 - Modify: `src/ui/main.ts`
 
 **Interfaces:**
+
 - Consumes: `TrackEntry`/`SelectionMessage`/`PopulateMessage` (types), `searchTracks`/`fetchArtworkBytes` (itunes), `extractDominantColor` (dominant-color), `RecentsStore`/`createStore` (recents), `makeItem`/`addSection` (render), `loadFeatured` (featured).
 
 - [ ] **Step 1: Replace `src/ui/main.ts`**
@@ -1560,7 +1736,8 @@ async function renderDefault(): Promise<void> {
     return
   }
   const list = addSection(resultsArea, 'Featured')
-  list.innerHTML = '<div class="loading" style="text-align:left;padding:8px 12px;">Loading&hellip;</div>'
+  list.innerHTML =
+    '<div class="loading" style="text-align:left;padding:8px 12px;">Loading&hellip;</div>'
   const featured = await loadFeatured()
   list.innerHTML = ''
   if (!featured.length) {
@@ -1648,10 +1825,12 @@ git commit -m "feat: add UI controller wiring search, recents, and populate"
 ### Task 14: Repo standardization
 
 **Files:**
+
 - Create: `.github/workflows/ci.yml`, `.github/workflows/dependabot-auto-merge.yml`, `.github/dependabot.yml`, `release-please-config.json`, `.release-please-manifest.json`, `commitlint.config.js`, `.markdownlint.json`, `LICENSE`, `README.md`
 - Modify: `package.json` (add hooks + lint-staged deps and config)
 
 **Interfaces:**
+
 - Produces: green CI; release automation; commit hooks.
 
 - [ ] **Step 1: Create `.github/workflows/ci.yml`**
@@ -1749,7 +1928,7 @@ Add to `scripts`: `"prepare": "[ -d .git ] && npx simple-git-hooks || true"`.
 
 - [ ] **Step 8: Create `README.md`** (markdownlint-compliant)
 
-```markdown
+````markdown
 # Music Bubble
 
 A Figma plugin that fills a selected "Music Bubble" component instance with real
@@ -1765,6 +1944,7 @@ npm install
 npm run watch    # development build
 npm run build    # production build into dist/
 ```
+````
 
 ### Quality checks
 
@@ -1793,7 +1973,8 @@ npm test
   color), `recents.ts`, `render.ts`, `featured.ts`, wired by `main.ts`.
 - `src/shared/color.ts` — color math shared by both threads.
 - `build.mjs` — esbuild: bundles the plugin and inlines the UI bundle into `dist/ui.html`.
-```
+
+````text
 
 - [ ] **Step 9: Install, enable hooks, verify everything**
 
@@ -1805,7 +1986,7 @@ Expected: all PASS.
 ```bash
 git add -A
 git commit -m "chore: add CI, dependabot, release automation, hooks, and docs"
-```
+````
 
 ---
 
