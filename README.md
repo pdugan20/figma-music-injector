@@ -61,4 +61,4 @@ on `npm install` via `simple-git-hooks`.
 ## Related
 
 - [figma-chat-builder](https://github.com/pdugan20/figma-chat-builder) - The iMessage AI Chat Builder the Music Bubble component ships with
-- [iMessage UI Kit](https://www.figma.com/community/file/1519446101653617639/imessage-chat-builder) - The companion Figma component library
+- [imessage-ui-kit](https://www.figma.com/community/file/1519446101653617639/imessage-chat-builder) - The companion Figma component library
