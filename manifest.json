@@ -1,0 +1,14 @@
+{
+  "name": "Music Bubble",
+  "id": "music-bubble-filler",
+  "api": "1.0.0",
+  "main": "dist/plugin.js",
+  "ui": "dist/ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "relaunchButtons": [{ "command": "music-bubble-filler", "name": "Music Bubble" }],
+  "networkAccess": {
+    "allowedDomains": ["https://itunes.apple.com", "https://*.mzstatic.com"],
+    "reasoning": "Searches the iTunes API for tracks and loads album artwork."
+  }
+}
