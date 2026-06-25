@@ -8,11 +8,11 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pdugan20/figma-music-bubble.git"
+    "url": "git+https://github.com/pdugan20/figma-imessage-music-bubble.git"
   },
-  "homepage": "https://github.com/pdugan20/figma-music-bubble#readme",
+  "homepage": "https://github.com/pdugan20/figma-imessage-music-bubble#readme",
   "bugs": {
-    "url": "https://github.com/pdugan20/figma-music-bubble/issues"
+    "url": "https://github.com/pdugan20/figma-imessage-music-bubble/issues"
   },
   "scripts": {
     "build": "node build.mjs",

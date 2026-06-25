@@ -1,6 +1,6 @@
 # iMessage Music Bubble
 
-[![CI](https://github.com/pdugan20/figma-music-bubble/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/figma-music-bubble/actions/workflows/ci.yml)
+[![CI](https://github.com/pdugan20/figma-imessage-music-bubble/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/figma-imessage-music-bubble/actions/workflows/ci.yml)
 [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/developers/plugins)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?logo=opensourceinitiative&logoColor=white)](LICENSE)
@@ -26,8 +26,8 @@ and a dominant-color theme drawn from the cover art.
 ## Getting Started
 
 ```bash
-git clone https://github.com/pdugan20/figma-music-bubble.git
-cd figma-music-bubble
+git clone https://github.com/pdugan20/figma-imessage-music-bubble.git
+cd figma-imessage-music-bubble
 npm install
 npm run build
 ```
@@ -60,5 +60,5 @@ on `npm install` via `simple-git-hooks`.
 
 ## Related
 
-- [chat-builder-plugin](https://github.com/pdugan20/chat-builder-plugin) - The iMessage AI Chat Builder the Music Bubble component ships with
+- [figma-imessage-chat-builder](https://github.com/pdugan20/figma-imessage-chat-builder) - The iMessage AI Chat Builder the Music Bubble component ships with
 - [iMessage UI Kit](https://www.figma.com/community/file/1519446101653617639/imessage-chat-builder) - The companion Figma component library
