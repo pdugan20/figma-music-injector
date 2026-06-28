@@ -17,7 +17,7 @@ jobs:
     steps:
       # Pinned to v4: v5 tightened conventional-commit parsing in ways that can
       # choke on Dependabot's grouped-update commit messages. v4 is stable here.
-      - uses: googleapis/release-please-action@v4
+      - uses: googleapis/release-please-action@v5
         id: release
         with:
           config-file: release-please-config.json
