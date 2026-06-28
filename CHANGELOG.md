@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.3.0](https://github.com/pdugan20/figma-music-bubble/compare/v0.2.0...v0.3.0) (2026-06-28)
+
+
+### Features
+
+* enable track selection when no bubble is selected ([692942f](https://github.com/pdugan20/figma-music-bubble/commit/692942f4adbf62d187b905aaf938d88f81e08eda))
+* follow Figma light/dark theme in the plugin panel ([7339a76](https://github.com/pdugan20/figma-music-bubble/commit/7339a76e0e08d7dc76e3016576a5db764b2c15f1))
+* insert a new Music Bubble when none is selected ([a680cb6](https://github.com/pdugan20/figma-music-bubble/commit/a680cb6206103ed866c869e5b65939f35e519ff4))
+
+
+### Bug Fixes
+
+* keep inserted Music Bubble orientation correct and simplify empty-selection status ([10238c4](https://github.com/pdugan20/figma-music-bubble/commit/10238c44536ce9a167ca1711bafd7d6ca7e4d8ef))
+
+
+### Documentation
+
+* design spec for dark mode, auto-insert, and toast text ([97a5caf](https://github.com/pdugan20/figma-music-bubble/commit/97a5caf7107abba47212aaab37528e9d2b3cea1e))
+* drop tech stack section, fold features into intro ([a31b1af](https://github.com/pdugan20/figma-music-bubble/commit/a31b1af3bec1e1198ee9e18c2c3dfe74c9cf40e1))
+* implementation plan for dark mode, auto-insert, and toast ([f00bd98](https://github.com/pdugan20/figma-music-bubble/commit/f00bd98eaae0aee0db09ebc7d35161b37b6622a7))
+
 ## [0.2.0](https://github.com/pdugan20/figma-music-bubble/compare/v0.1.0...v0.2.0) (2026-06-25)
 
 
