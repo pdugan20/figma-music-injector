@@ -2,14 +2,16 @@
 
 [![CI](https://github.com/pdugan20/figma-music-bubble/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/figma-music-bubble/actions/workflows/ci.yml)
 [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/developers/plugins)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?logo=opensourceinitiative&logoColor=white)](LICENSE)
 
-A Figma plugin that fills a selected Music Bubble component with real track data from
-the iTunes API. Search any song, then one click sets the title, artist, album artwork,
-and a dominant-color theme drawn from the cover art. Search results show album artwork
-with a dominant-color swatch, text and the Apple Music logo adapt for light/dark
-contrast, and recently used and featured tracks are a click away with debounced search.
+A Figma plugin that fills a Music Bubble component with real track data from the iTunes
+API. Select a bubble and pick a song, or — with nothing selected — pick a track and the
+plugin inserts a new bubble for you. One click sets the title, artist, album artwork, and
+a dominant-color theme drawn from the cover art. Search results show album artwork with a
+dominant-color swatch, text and the Apple Music logo adapt for light/dark contrast, the
+plugin panel follows Figma's light or dark theme, and recently used and featured tracks
+are a click away with debounced search.
 
 ## Prerequisites
 
@@ -28,8 +30,8 @@ npm run build
 ```
 
 Install in Figma: Plugins > Development > Import plugin from manifest... and select
-`manifest.json`. Select a Music Bubble instance, run the plugin, search a song, and
-click a result.
+`manifest.json`. Run the plugin, search a song, and click a result — select a Music
+Bubble first to fill it, or run with nothing selected to drop in a new one.
 
 ## Development
 
