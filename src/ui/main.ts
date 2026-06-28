@@ -6,7 +6,6 @@ import { makeItem, addSection } from './render'
 import { loadFeatured } from './featured'
 
 const recents = new RecentsStore(createStore())
-let canPopulate = false
 
 const searchInput = document.getElementById('search-input') as HTMLInputElement
 const clearBtn = document.getElementById('clear-btn') as HTMLButtonElement
@@ -17,12 +16,10 @@ let debounceTimer: ReturnType<typeof setTimeout> | undefined
 window.onmessage = (event: MessageEvent) => {
   const msg = event.data.pluginMessage as SelectionMessage | undefined
   if (!msg || msg.type !== 'selection') return
-  canPopulate = msg.status.ok
   statusLabel.textContent = msg.status.message
 }
 
 function selectEntry(entry: TrackEntry): void {
-  if (!canPopulate) return
   void (async () => {
     const artworkBytes = await fetchArtworkBytes(entry.artworkUrl)
     recents.add(entry)

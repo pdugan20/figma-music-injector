@@ -10,19 +10,21 @@ function instanceWithSong() {
 }
 
 describe('getSelectionStatus', () => {
-  it('empty selection', () => {
-    expect(getSelectionStatus([] as never).message).toBe('Select a Music Bubble layer')
+  it('empty selection offers to insert', () => {
+    expect(getSelectionStatus([] as never).message).toBe('A new bubble will be added')
   })
 
-  it('multiple selection', () => {
-    expect(getSelectionStatus([{}, {}] as never).message).toBe('Select a single Music Bubble layer')
+  it('multiple selection offers to insert', () => {
+    expect(getSelectionStatus([{}, {}] as never).message).toBe('A new bubble will be added')
   })
 
-  it('non-instance', () => {
-    expect(getSelectionStatus([{ type: 'RECTANGLE' }] as never).ok).toBe(false)
+  it('non-instance offers to insert', () => {
+    const status = getSelectionStatus([{ type: 'RECTANGLE' }] as never)
+    expect(status.ok).toBe(false)
+    expect(status.message).toBe('A new bubble will be added')
   })
 
-  it('instance missing Song Name', () => {
+  it('instance missing Song Name offers to insert', () => {
     const node = { type: 'INSTANCE', findOne: () => null }
     expect(getSelectionStatus([node] as never).ok).toBe(false)
   })

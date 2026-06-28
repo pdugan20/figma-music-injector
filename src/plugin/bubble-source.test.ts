@@ -20,6 +20,6 @@ describe('SelectionBubbleSource', () => {
     setSelection([])
     const res = new SelectionBubbleSource().resolve()
     expect(res.ok).toBe(false)
-    if (!res.ok) expect(res.message).toBe('Select a Music Bubble layer')
+    if (!res.ok) expect(res.message).toBe('A new bubble will be added')
   })
 })
