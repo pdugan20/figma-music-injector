@@ -1,6 +1,6 @@
 {
   "name": "figma-music-bubble",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Figma plugin that fills a Music Bubble component with iTunes track data.",
   "license": "MIT",
   "author": "Patrick Dugan",

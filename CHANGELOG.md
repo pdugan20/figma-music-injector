@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/pdugan20/figma-music-bubble/compare/v0.3.0...v0.3.1) (2026-06-28)
+
+
+### Bug Fixes
+
+* prevent duplicate bubbles on double-click; refresh README ([#12](https://github.com/pdugan20/figma-music-bubble/issues/12)) ([7ec2898](https://github.com/pdugan20/figma-music-bubble/commit/7ec2898ab4b898f5e84dde48a4e4f1cf7df9f494))
+
 ## [0.3.0](https://github.com/pdugan20/figma-music-bubble/compare/v0.2.0...v0.3.0) (2026-06-28)
 
 
