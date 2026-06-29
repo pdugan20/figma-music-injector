@@ -8,7 +8,7 @@ const songMatcher = (p: (n: { name: string }) => boolean) =>
 const dynProps = { [DYNAMIC_COLORS.PROP]: { value: 'True' } }
 
 function newNode(rt: number[][]) {
-  return { width: 100, height: 80, relativeTransform: rt }
+  return { width: 100, height: 80, relativeTransform: rt, visible: true }
 }
 
 afterEach(() => {
@@ -70,6 +70,8 @@ describe('CanvasBubbleSource', () => {
       [-1, 0, 100],
       [0, 1, 20],
     ])
+    // hidden until the caller populates it, so the source's track data never flashes
+    expect(clonedNode.visible).toBe(false)
   })
 
   it('skips a container instance that only holds a Song Name (no dynamic-colors property)', async () => {
@@ -108,6 +110,7 @@ describe('CanvasBubbleSource', () => {
       [-1, 0, 100],
       [0, 1, 20],
     ])
+    expect(made.visible).toBe(false)
   })
 
   it('creates from a component set default variant, unflipped', async () => {

@@ -47,8 +47,11 @@ function findComponentSource(): ComponentNode | null {
 // Parent the new instance on the current page and center it in the viewport,
 // preserving the source's horizontal flip so a mirror-authored bubble keeps
 // reading correctly. The bubble has no rotation or shear, so a flip-and-
-// translate transform is exact. Returns the placed instance.
+// translate transform is exact. The instance is hidden until the caller
+// populates it — a cloned bubble carries the source's track data, which would
+// otherwise flash on screen during the async fill. Returns the placed instance.
 function place(instance: InstanceNode, source: SceneNode): InstanceNode {
+  instance.visible = false
   figma.currentPage.appendChild(instance)
   const flipX = source.relativeTransform[0][0] < 0 ? -1 : 1
   const center = figma.viewport.center
@@ -72,9 +75,13 @@ export class CanvasBubbleSource implements BubbleSource {
     }
 
     await figma.loadAllPagesAsync()
+    // Skip instance interiors while scanning so a bubble nested inside another
+    // instance (e.g. a chat thread) is not picked as a clone source. Reset it
+    // before returning so fillBubble can still find the hidden instance's layers.
     figma.skipInvisibleInstanceChildren = true
-
     const existing = findExistingInstance()
+    figma.skipInvisibleInstanceChildren = false
+
     if (existing) return { ok: true, instance: place(existing.clone(), existing), created: true }
 
     const component = findComponentSource()

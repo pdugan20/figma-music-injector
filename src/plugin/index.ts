@@ -35,10 +35,16 @@ figma.ui.onmessage = async (msg: PopulateMessage) => {
     }
     const filled = await fillBubble(resolved.instance, msg)
     if (!filled) {
+      // A freshly created bubble is hidden and unpopulated; remove it rather
+      // than leave an empty hidden node behind.
+      if (resolved.created) resolved.instance.remove()
       figma.notify('Could not find the expected layers in this Music Bubble')
       return
     }
-    if (resolved.created) figma.currentPage.selection = [resolved.instance]
+    if (resolved.created) {
+      resolved.instance.visible = true
+      figma.currentPage.selection = [resolved.instance]
+    }
     figma.notify(`Added ${msg.trackName} by ${msg.artistName}`)
   } finally {
     populating = false
