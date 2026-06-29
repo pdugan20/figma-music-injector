@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/pdugan20/figma-music-bubble/compare/v0.3.1...v0.3.2) (2026-06-29)
+
+
+### Bug Fixes
+
+* hide inserted bubble until populated to stop content flash ([#14](https://github.com/pdugan20/figma-music-bubble/issues/14)) ([61f7e6c](https://github.com/pdugan20/figma-music-bubble/commit/61f7e6ca0de59ddf6711a313b6071400777bcc12))
+
 ## [0.3.1](https://github.com/pdugan20/figma-music-bubble/compare/v0.3.0...v0.3.1) (2026-06-28)
 
 
