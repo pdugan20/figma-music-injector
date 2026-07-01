@@ -42,8 +42,17 @@ figma.ui.onmessage = async (msg: PopulateMessage) => {
       return
     }
     if (resolved.created) {
+      // Reveal first, THEN position: finalizePlacement measures the bubble's
+      // real rendered box, which only exists once visible. Figma batches canvas
+      // repaints until this handler returns, so the brief pre-nudge position
+      // never paints (no flash).
+      //
+      // Do NOT select it: a selected bubble is an overwrite target (see
+      // CanvasBubbleSource.resolve), so auto-selecting would make the next insert
+      // re-fill this same bubble instead of adding a new one. Leaving the
+      // selection empty lets repeated inserts keep cascading out new bubbles.
       resolved.instance.visible = true
-      figma.currentPage.selection = [resolved.instance]
+      resolved.finalizePlacement()
     }
     figma.notify(`Added ${msg.trackName} by ${msg.artistName}`)
   } finally {
