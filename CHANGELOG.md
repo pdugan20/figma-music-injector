@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/pdugan20/figma-music-bubble/compare/v0.3.2...v0.4.0) (2026-07-01)
+
+
+### Features
+
+* outline album art with a faint contrast hairline ([d946346](https://github.com/pdugan20/figma-music-bubble/commit/d9463469284027655035a3e89b78a9a3252af245))
+* polish bubble insertion (cascade placement, faint art hairline) ([6597618](https://github.com/pdugan20/figma-music-bubble/commit/65976189fd3c8d9a7b91407e3cc205d078112d65))
+
+
+### Bug Fixes
+
+* cascade inserted bubbles by rendered bounds instead of stacking ([f45d727](https://github.com/pdugan20/figma-music-bubble/commit/f45d727650dc3b50c10d88b3f8d199f684a5da0a))
+
 ## [0.3.2](https://github.com/pdugan20/figma-music-bubble/compare/v0.3.1...v0.3.2) (2026-06-29)
 
 
