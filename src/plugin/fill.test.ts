@@ -63,6 +63,21 @@ describe('fillBubble', () => {
     expect(fills.some((f) => f.type === 'IMAGE')).toBe(true)
   })
 
+  it('draws a contrast hairline on the album art so it never blends into the bubble', async () => {
+    const { nodes, instance } = buildInstance()
+    await fillBubble(instance as never, data)
+    const art = nodes.albumArt as {
+      strokes: { type: string; color: { r: number; g: number; b: number }; opacity: number }[]
+      strokeWeight: number
+      strokeAlign: string
+    }
+    // dark dominant -> very faint white hairline at 0.22 (see computeBubbleTheme)
+    expect(art.strokes).toEqual([{ type: 'SOLID', color: { r: 1, g: 1, b: 1 }, opacity: 0.22 }])
+    expect(art.strokeWeight).toBe(1)
+    // INSIDE so the 1px sits within the art bounds and does not shift layout
+    expect(art.strokeAlign).toBe('INSIDE')
+  })
+
   it('returns false when required layers are missing', async () => {
     const instance = {
       componentProperties: {},

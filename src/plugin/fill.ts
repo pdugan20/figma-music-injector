@@ -76,6 +76,15 @@ export async function fillBubble(instance: InstanceNode, data: PopulateMessage):
     if (data.dominantColor) {
       const theme = computeBubbleTheme(data.dominantColor)
 
+      // The bubble fill is the art's dominant color, so art whose edges are that
+      // color would blend into the bubble. A thin contrasting hairline, aligned
+      // INSIDE so it never shifts layout, keeps the artwork reading as a card.
+      albumArtNode.strokes = [
+        { type: 'SOLID', color: theme.borderColor, opacity: theme.borderOpacity },
+      ]
+      albumArtNode.strokeWeight = 1
+      albumArtNode.strokeAlign = 'INSIDE'
+
       replaceSolidFill(songNode, theme.textColor, 1)
       replaceSolidFill(artistNode, theme.textColor, 1)
 
