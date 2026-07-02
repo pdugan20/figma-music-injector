@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/pdugan20/figma-music-injector/compare/v0.4.0...v0.4.1) (2026-07-02)
+
+
+### Bug Fixes
+
+* re-center cascade when placed bubbles are deleted ([#26](https://github.com/pdugan20/figma-music-injector/issues/26)) ([499c59e](https://github.com/pdugan20/figma-music-injector/commit/499c59e3c4a88e1bc586287918654a87a2097321))
+
 ## [0.4.0](https://github.com/pdugan20/figma-music-bubble/compare/v0.3.2...v0.4.0) (2026-07-01)
 
 
