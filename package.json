@@ -1,5 +1,5 @@
 {
-  "name": "figma-music-bubble",
+  "name": "figma-music-injector",
   "version": "0.4.0",
   "description": "Figma plugin that fills a Music Bubble component with iTunes track data.",
   "license": "MIT",
@@ -8,11 +8,11 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pdugan20/figma-music-bubble.git"
+    "url": "git+https://github.com/pdugan20/figma-music-injector.git"
   },
-  "homepage": "https://github.com/pdugan20/figma-music-bubble#readme",
+  "homepage": "https://github.com/pdugan20/figma-music-injector#readme",
   "bugs": {
-    "url": "https://github.com/pdugan20/figma-music-bubble/issues"
+    "url": "https://github.com/pdugan20/figma-music-injector/issues"
   },
   "scripts": {
     "build": "node build.mjs",
