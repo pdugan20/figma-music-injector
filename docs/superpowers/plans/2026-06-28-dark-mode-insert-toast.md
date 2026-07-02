@@ -352,8 +352,7 @@ import { getSelectionStatus } from './selection'
 import { LAYER } from './bubble-schema'
 
 export type BubbleResolution =
-  | { ok: true; instance: InstanceNode; created: boolean }
-  | { ok: false; message: string }
+  { ok: true; instance: InstanceNode; created: boolean } | { ok: false; message: string }
 
 export interface BubbleSource {
   resolve(): Promise<BubbleResolution>
