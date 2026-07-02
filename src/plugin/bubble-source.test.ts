@@ -11,6 +11,34 @@ function newNode(rt: number[][]) {
   return { width: 100, height: 80, relativeTransform: rt, visible: true }
 }
 
+// A clone the source hands back, carrying the `removed` flag Figma sets when the
+// user deletes the node. Unflipped so relativeTransform[*][2] reads as (left, top).
+function placeable() {
+  return {
+    width: 100,
+    height: 80,
+    visible: true,
+    removed: false,
+    relativeTransform: [
+      [1, 0, 0],
+      [0, 1, 0],
+    ] as number[][],
+  }
+}
+
+function sourceCloning(clones: unknown[]) {
+  return {
+    type: 'INSTANCE',
+    componentProperties: dynProps,
+    findOne: songMatcher,
+    relativeTransform: [
+      [1, 0, 0],
+      [0, 1, 0],
+    ],
+    clone: () => clones.shift(),
+  }
+}
+
 afterEach(() => {
   delete (globalThis as { figma?: unknown }).figma
 })
@@ -182,6 +210,46 @@ describe('CanvasBubbleSource', () => {
     // nudge: x += left - box.x = 0 - (-50) = 50 ; y += top - box.y = 20 - 100 = -80
     expect(clone.x).toBe(50)
     expect(clone.y).toBe(-80)
+  })
+
+  it('re-centers the next insert when the previously placed bubble was deleted', async () => {
+    const a = placeable()
+    const b = placeable()
+    setFigma({ selection: [], byType: { INSTANCE: [sourceCloning([a, b])] } })
+    const source = new CanvasBubbleSource()
+    await source.resolve() // a centers at (0, 20)
+    a.removed = true // user deletes it
+    await source.resolve() // b: anchor gone -> re-center, not cascade
+    expect(a.relativeTransform).toEqual([
+      [1, 0, 0],
+      [0, 1, 20],
+    ])
+    expect(b.relativeTransform).toEqual([
+      [1, 0, 0],
+      [0, 1, 20],
+    ])
+  })
+
+  it('cascades from the newest surviving bubble when a later bubble was deleted', async () => {
+    const a = placeable()
+    const b = placeable()
+    const c = placeable()
+    const d = placeable()
+    setFigma({ selection: [], byType: { INSTANCE: [sourceCloning([a, b, c, d])] } })
+    const source = new CanvasBubbleSource()
+    await source.resolve() // a (0, 20)
+    await source.resolve() // b (40, 68)
+    await source.resolve() // c (80, 116)
+    c.removed = true // delete the newest
+    await source.resolve() // d: newest survivor is b -> cascade to c's old slot
+    expect(b.relativeTransform).toEqual([
+      [1, 0, 40],
+      [0, 1, 68],
+    ])
+    expect(d.relativeTransform).toEqual([
+      [1, 0, 80],
+      [0, 1, 116],
+    ])
   })
 
   it('skips a container instance that only holds a Song Name (no dynamic-colors property)', async () => {

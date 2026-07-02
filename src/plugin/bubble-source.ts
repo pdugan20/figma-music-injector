@@ -84,9 +84,11 @@ export function nextPlacement(
 }
 
 export class CanvasBubbleSource implements BubbleSource {
-  // Top-left of the most recent placement this session, so the next insert can
-  // cascade off it. Resets when the plugin reloads; null means "center it".
-  private lastTopLeft: { x: number; y: number } | null = null
+  // Bubbles placed this session, oldest-first, each with the cascade top-left it
+  // was anchored at. The next insert cascades off the newest entry still on the
+  // canvas; deleted ones are pruned so the cascade re-centers once none survive.
+  // Resets when the plugin reloads.
+  private placed: { instance: InstanceNode; topLeft: { x: number; y: number } }[] = []
 
   async resolve(): Promise<BubbleResolution> {
     const selection = figma.currentPage.selection
@@ -128,8 +130,12 @@ export class CanvasBubbleSource implements BubbleSource {
     const flipX = source.relativeTransform[0][0] < 0 ? -1 : 1
     const size = { width: instance.width, height: instance.height }
     const viewport = { center: figma.viewport.center, bounds: figma.viewport.bounds }
-    const { x: left, y: top } = nextPlacement(size, viewport, this.lastTopLeft)
-    this.lastTopLeft = { x: left, y: top }
+    // Drop bubbles the user has since deleted, then anchor on the newest one
+    // still on the canvas (or re-center when none remain).
+    this.placed = this.placed.filter((p) => !p.instance.removed)
+    const anchor = this.placed.length > 0 ? this.placed[this.placed.length - 1].topLeft : null
+    const { x: left, y: top } = nextPlacement(size, viewport, anchor)
+    this.placed.push({ instance, topLeft: { x: left, y: top } })
     // Establish the flip and a first-guess position from the nominal frame. The
     // exact position is corrected by finalizePlacement once the bubble is
     // revealed: the nominal frame width is a lie (the inner bubble hugs its
