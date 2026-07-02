@@ -1,17 +1,18 @@
-# Apple Music Figma Plugin
+# Music Injector Figma Plugin
 
-[![CI](https://github.com/pdugan20/figma-music-bubble/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/figma-music-bubble/actions/workflows/ci.yml)
+[![CI](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml)
 [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/developers/plugins)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?logo=opensourceinitiative&logoColor=white)](LICENSE)
 
-A Figma plugin that fills a Music Bubble component with real track data from the iTunes
+A Figma plugin that injects real track data into a Music Bubble component from the iTunes
 API. Select a bubble and pick a song, or — with nothing selected — pick a track and the
 plugin inserts a new bubble for you. One click sets the title, artist, album artwork, and
 a dominant-color theme drawn from the cover art. Search results show album artwork with a
-dominant-color swatch, text and the Apple Music logo adapt for light/dark contrast, the
-plugin panel follows Figma's light or dark theme, and recently used and featured tracks
-are a click away with debounced search.
+dominant-color swatch, text and the Apple Music logo adapt for light/dark contrast, a
+faint hairline keeps a same-toned cover from blending into the bubble, the plugin panel
+follows Figma's light or dark theme, and recently used and featured tracks are a click
+away with debounced search.
 
 ## Prerequisites
 
@@ -23,8 +24,8 @@ are a click away with debounced search.
 ## Getting Started
 
 ```bash
-git clone https://github.com/pdugan20/figma-music-bubble.git
-cd figma-music-bubble
+git clone https://github.com/pdugan20/figma-music-injector.git
+cd figma-music-injector
 npm install
 npm run build
 ```

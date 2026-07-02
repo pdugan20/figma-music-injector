@@ -13,8 +13,8 @@ quality bar, and how changes get released.
 ## Setup
 
 ```bash
-git clone https://github.com/pdugan20/figma-music-bubble.git
-cd figma-music-bubble
+git clone https://github.com/pdugan20/figma-music-injector.git
+cd figma-music-injector
 npm install
 npm run build
 ```

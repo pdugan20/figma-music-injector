@@ -4,9 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working in this
 
 ## Project Overview
 
-A Figma plugin that fills a selected "Music Bubble" component instance (from the iMessage
-UI kit) with real track data from the iTunes Search API: song title, artist, album
-artwork, and a dominant-color theme drawn from the cover art.
+A Figma plugin (figma-music-injector) that injects real track data into a selected "Music
+Bubble" component instance (from the iMessage UI kit): song title, artist, album artwork,
+and a dominant-color theme drawn from the cover art, with contrast-aware text and a faint
+hairline so a same-toned cover does not blend into the bubble.
 
 ## Essential Commands
 
