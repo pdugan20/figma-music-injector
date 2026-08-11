@@ -1,9 +1,9 @@
 # Music Injector Figma Plugin
 
 [![CI](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/pdugan20/figma-music-injector?logo=github&logoColor=white)](https://github.com/pdugan20/figma-music-injector/releases/latest)
 [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/developers/plugins)
-[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?logo=opensourceinitiative&logoColor=white)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?logo=opensourceinitiative&logoColor=white)](LICENSE)
 
 A Figma plugin that injects real track data into a Music Bubble component from the iTunes
 API. Select a bubble and pick a song, or — with nothing selected — pick a track and the
