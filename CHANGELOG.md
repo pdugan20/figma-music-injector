@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/pdugan20/figma-music-injector/compare/v0.4.1...v0.4.2) (2026-08-11)
+
+
+### Bug Fixes
+
+* make featured tracks reliable ([9a61a3d](https://github.com/pdugan20/figma-music-injector/commit/9a61a3df4165ba708ab8178abcc8f5c24ed6612e))
+
 ## [0.4.1](https://github.com/pdugan20/figma-music-injector/compare/v0.4.0...v0.4.1) (2026-07-02)
 
 
