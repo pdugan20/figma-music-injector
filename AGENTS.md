@@ -51,6 +51,15 @@ the thin IO / DOM / Figma shells so it can be unit-tested.
   SF Pro; long titles truncate via the component's text-truncation settings.
 - Keep pure functions free of Figma/DOM/fetch calls so they stay unit-testable.
 
+## Code Review Rules
+
+- Flag Figma API access outside `src/plugin/` or DOM/fetch access in pure shared logic.
+- Flag layer names or variant-property strings duplicated outside
+  `src/plugin/bubble-schema.ts`, or message-contract changes without typed validation and
+  tests on both plugin and UI sides.
+- Flag document mutations before the target instance, required layers, fonts, artwork,
+  and theme inputs are validated, or failure paths that leave a partially updated bubble.
+
 ## Standards
 
 - TDD with Vitest; new logic ships with tests.
