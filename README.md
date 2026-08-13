@@ -2,24 +2,12 @@
 
 [![CI](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/pdugan20/figma-music-injector?logo=github&logoColor=white)](https://github.com/pdugan20/figma-music-injector/releases/latest)
-[![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/developers/plugins)
+[![Figma Plugin](https://img.shields.io/badge/Figma-Community-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/community/plugin/1652043984127056655/imessage-music-builder)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?logo=opensourceinitiative&logoColor=white)](LICENSE)
 
-A Figma plugin that injects real track data into a Music Bubble component from the iTunes
-API. Select a bubble and pick a song, or — with nothing selected — pick a track and the
-plugin inserts a new bubble for you. One click sets the title, artist, album artwork, and
-a dominant-color theme drawn from the cover art. Search results show album artwork with a
-dominant-color swatch, text and the Apple Music logo adapt for light/dark contrast, a
-faint hairline keeps a same-toned cover from blending into the bubble, the plugin panel
-follows Figma's light or dark theme, and recently used and featured tracks are a click
-away with debounced search.
-
-## Prerequisites
-
-- [Node.js](https://nodejs.org) v22+
-- [Figma desktop app](https://figma.com/downloads/)
-- [Apple SF Pro typeface](https://developer.apple.com/fonts/)
-- [iMessage UI Kit](https://www.figma.com/community/file/1519446101653617639/imessage-chat-builder) (provides the Music Bubble component)
+A Figma plugin that fills Music Bubble components with real track data from iTunes.
+Choose a song to update a selected bubble or insert a new one. The plugin adds the title,
+artist, artwork, and a contrast-aware color theme sampled from the cover.
 
 ## Getting Started
 
@@ -31,8 +19,8 @@ npm run build
 ```
 
 Install in Figma: Plugins > Development > Import plugin from manifest... and select
-`manifest.json`. Run the plugin, search a song, and click a result — select a Music
-Bubble first to fill it, or run with nothing selected to drop in a new one.
+`manifest.json`. Run the plugin, search for a song, and click a result. Select a Music
+Bubble first to fill it, or run with nothing selected to insert a new one.
 
 ## Development
 
@@ -44,11 +32,3 @@ npm run test:coverage # Tests with coverage
 npm run lint:fix      # ESLint with autofix
 npm run style:write   # Prettier formatting
 ```
-
-Git hooks (pre-commit lint-staged, commit-msg commitlint) are installed automatically
-on `npm install` via `simple-git-hooks`.
-
-## Related
-
-- [figma-chat-builder](https://github.com/pdugan20/figma-chat-builder) - The iMessage AI Chat Builder the Music Bubble component ships with
-- [imessage-ui-kit](https://www.figma.com/community/file/1519446101653617639/imessage-chat-builder) - The companion Figma component library
