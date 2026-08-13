@@ -1,9 +1,8 @@
-# Music Injector Figma Plugin
+# figma-music-injector
 
-[![CI](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/pdugan20/figma-music-injector?logo=github&logoColor=white)](https://github.com/pdugan20/figma-music-injector/releases/latest)
-[![Figma Plugin](https://img.shields.io/badge/Figma-Community-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/community/plugin/1652043984127056655/imessage-music-builder)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?logo=opensourceinitiative&logoColor=white)](LICENSE)
+[![CI](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/pdugan20/figma-music-injector/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/pdugan20/figma-music-injector)](https://github.com/pdugan20/figma-music-injector/releases/latest)
+[![License](https://img.shields.io/github/license/pdugan20/figma-music-injector)](LICENSE)
 
 A Figma plugin that fills Music Bubble components with real track data from iTunes.
 Choose a song to update a selected bubble or insert a new one. The plugin adds the title,
