@@ -21,6 +21,13 @@ updates:
       - 'pdugan20'
     assignees:
       - 'pdugan20'
+    # TypeScript 7 does not expose the programmatic API required by the current
+    # typescript-eslint toolchain. Revisit only with a proven TS7/dual-toolchain
+    # compatibility envelope.
+    ignore:
+      - dependency-name: 'typescript'
+        versions:
+          - '>=7'
     groups:
       development-dependencies:
         patterns:
