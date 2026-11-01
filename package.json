@@ -19,6 +19,7 @@
   },
   "scripts": {
     "build": "node build.mjs",
+    "verify": "npm run style:check && npm run lint && npm run type-check && npm test && npm run build",
     "watch": "node build.mjs --watch",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
