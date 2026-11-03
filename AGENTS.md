@@ -16,6 +16,7 @@ hairline so a same-toned cover does not blend into the bubble.
 ## Essential Commands
 
 ```bash
+npm run verify        # All CI checks: formatting, lint, types, tests, build
 npm run watch         # Dev build, rebuilds on change
 npm run build         # Production build into dist/
 npm run type-check    # tsc --noEmit

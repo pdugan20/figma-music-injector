@@ -37,7 +37,7 @@ Reference: <https://developers.figma.com/docs/plugins/css-variables/>
 - Audit the remaining hardcoded color fallbacks; they are retained as
   light-mode fallbacks for the case where variables are absent.
 
-### Testing
+### Dark mode testing
 
 No unit test — this is a runtime flag plus CSS. Verified manually in Figma in
 both light and dark editor themes.
@@ -101,7 +101,7 @@ selected), never on every `selectionchange`, because the manifest uses
   no-selection case). If discovery fails at populate time, the failure is
   surfaced via a toast (see section 3).
 
-### Testing
+### Auto-insert testing
 
 Extend `bubble-source.test.ts` with a mocked `figma` to cover all four ladder
 branches:
