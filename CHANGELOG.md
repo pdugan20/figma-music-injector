@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.0.0](https://github.com/pdugan20/figma-music-injector/compare/v0.4.2...v1.0.0) (2026-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* standardize on Node 24 ([#52](https://github.com/pdugan20/figma-music-injector/issues/52))
+
+### Bug Fixes
+
+* resolve open Dependabot security alerts ([#73](https://github.com/pdugan20/figma-music-injector/issues/73)) ([2d85298](https://github.com/pdugan20/figma-music-injector/commit/2d852985507333580a348c374be66aaef2457d2b))
+
+
+### Documentation
+
+* align README badges ([#49](https://github.com/pdugan20/figma-music-injector/issues/49)) ([57a0922](https://github.com/pdugan20/figma-music-injector/commit/57a092218e9f26accce9f1163572c344e099f20d))
+* standardize README title and badges ([#55](https://github.com/pdugan20/figma-music-injector/issues/55)) ([f7ff123](https://github.com/pdugan20/figma-music-injector/commit/f7ff1230633982dc7c161f372396f96d4be1bce3))
+* streamline readme ([262bcf6](https://github.com/pdugan20/figma-music-injector/commit/262bcf6e144e4e813da787bc7f5a9fc2d35f2e34))
+
+
+### Miscellaneous
+
+* standardize on Node 24 ([#52](https://github.com/pdugan20/figma-music-injector/issues/52)) ([af73d91](https://github.com/pdugan20/figma-music-injector/commit/af73d91de055186287ffdbc26455c21a83e2d52d))
+
 ## [0.4.2](https://github.com/pdugan20/figma-music-injector/compare/v0.4.1...v0.4.2) (2026-08-11)
 
 
